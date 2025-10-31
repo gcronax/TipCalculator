@@ -25,9 +25,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.tipcalculator.ui.theme.TipCalculatorTheme
 import kotlin.math.round
 
@@ -51,7 +54,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(modifier: Modifier = Modifier) {
     var estadoTextField1 by remember { mutableStateOf(" ") }
     var estadoTextField2 by remember { mutableStateOf(" ") }
-    var result: Double
+    var result =0.0
 
 
 
@@ -60,6 +63,12 @@ fun Greeting(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize().padding(20.dp)
     ) {
+        Text(
+            text="Calculate Tip",
+            fontSize = 20.sp
+        )
+        Spacer(modifier=Modifier.size(50.dp))
+
         TextField(
             value = estadoTextField1,
             onValueChange = {
@@ -71,7 +80,7 @@ fun Greeting(modifier: Modifier = Modifier) {
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-        Spacer(modifier=Modifier.size(10.dp))
+        Spacer(modifier=Modifier.size(20.dp))
         TextField(
             value = estadoTextField2,
             onValueChange = {
@@ -85,7 +94,7 @@ fun Greeting(modifier: Modifier = Modifier) {
 
         )
         var checked by remember { mutableStateOf(true) }
-
+        Spacer(modifier=Modifier.size(20.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -103,18 +112,23 @@ fun Greeting(modifier: Modifier = Modifier) {
                 }
             )
         }
-        var result1 = (estadoTextField1.toDoubleOrNull() ?: 0.0) / 100 * (estadoTextField2.toDoubleOrNull() ?: 0.0)
-
-        var result2=result1
 
         if (checked){
-            result2= round(result2)
+            result = (estadoTextField1.toDoubleOrNull() ?: 0.0) / 100 * (estadoTextField2.toDoubleOrNull() ?: 0.0)
         }
+        Spacer(modifier=Modifier.size(30.dp))
 
         Text(
-            text = "Tip Amount: $${result2}"
-
+            text = "Tip Amount: $${result}",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
         )
+        Spacer(modifier=Modifier.size(30.dp))
+        Spacer(modifier=Modifier.size(30.dp))
+        Spacer(modifier=Modifier.size(30.dp))
+        Spacer(modifier=Modifier.size(30.dp))
+        Spacer(modifier=Modifier.size(30.dp))
+
 
 
 
