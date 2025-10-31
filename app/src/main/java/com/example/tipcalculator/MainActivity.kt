@@ -112,9 +112,9 @@ fun Greeting(modifier: Modifier = Modifier) {
                 }
             )
         }
-
+        result = (estadoTextField1.toDoubleOrNull() ?: 0.0) / 100 * (estadoTextField2.toDoubleOrNull() ?: 0.0)
         if (checked){
-            result = (estadoTextField1.toDoubleOrNull() ?: 0.0) / 100 * (estadoTextField2.toDoubleOrNull() ?: 0.0)
+            result=round(result)
         }
         Spacer(modifier=Modifier.size(30.dp))
 
