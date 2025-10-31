@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tipcalculator.ui.theme.TipCalculatorTheme
+import org.jetbrains.annotations.VisibleForTesting
 import kotlin.math.round
 
 class MainActivity : ComponentActivity() {
@@ -93,7 +94,7 @@ fun Greeting(modifier: Modifier = Modifier) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
 
         )
-        var checked by remember { mutableStateOf(true) }
+        var checked by remember { mutableStateOf(false) }
         Spacer(modifier=Modifier.size(20.dp))
 
         Row(
@@ -112,7 +113,7 @@ fun Greeting(modifier: Modifier = Modifier) {
                 }
             )
         }
-        result = (estadoTextField1.toDoubleOrNull() ?: 0.0) / 100 * (estadoTextField2.toDoubleOrNull() ?: 0.0)
+        result = obtainDouble(estadoTextField1,estadoTextField2)
         if (checked){
             result=round(result)
         }
@@ -130,10 +131,11 @@ fun Greeting(modifier: Modifier = Modifier) {
         Spacer(modifier=Modifier.size(30.dp))
 
 
-
-
-
-
     }
+}
+
+@VisibleForTesting
+internal fun obtainDouble(estadoTextField1: String, estadoTextField2: String): Double {
+    return (estadoTextField1.toDoubleOrNull() ?: 0.0) / 100 * (estadoTextField2.toDoubleOrNull() ?: 0.0)
 }
 

@@ -3,6 +3,7 @@ package com.example.tipcalculator
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.text.NumberFormat
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -11,7 +12,9 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun obtainDouble_isCorrect() {
+        val expectedTip =50.0
+        val actualTip = obtainDouble(estadoTextField1 = "100", estadoTextField2 = "50")
+        assertEquals(expectedTip, actualTip)
     }
 }
