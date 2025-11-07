@@ -13,8 +13,9 @@ import java.text.NumberFormat
 class ExampleUnitTest {
     @Test
     fun obtainDouble_isCorrect() {
-        val expectedTip =50.0
-        val actualTip = obtainDouble(estadoTextField1 = "100", estadoTextField2 = "50")
-        assertEquals(expectedTip, actualTip)
+        val expectedTip =40.00
+        val actualTip = obtainDouble(estadoTextField1 = "100", estadoTextField2 = "40")
+
+        assertEquals(expectedTip, actualTip,0.00)
     }
 }
